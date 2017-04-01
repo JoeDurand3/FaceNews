@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FaceNews.UI.WhatIsFNView">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Maroon">
+            <Label x:Name="PromptField"
+                   Text="What is this?"/>
+            <StackLayout x:Name="Visuals"
+                         Orientation="Horizontal">
+                <Image x:Name="faceImage" />
+                <Image x:Name="plusImage"
+                       WidthRequest="50"
+                       Source="plus.png"/>
+                <Image x:Name="newsImage"/>
+            </StackLayout>
+            <Label x:Name="TitleField"
+                   Text="FaceNews"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

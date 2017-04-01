@@ -12,8 +12,8 @@ namespace FaceNews
         public App()
         {
             InitializeComponent();
-
-            MainPage = new FaceNews.MainPage();
+            MainPage = new UI.DevView();
+            
         }
 
         protected override void OnStart()
