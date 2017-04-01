@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
+using System.Diagnostics;
 using Xamarin.Forms;
 
 namespace FaceNews
@@ -11,9 +10,10 @@ namespace FaceNews
     {
         public App()
         {
-            InitializeComponent();
+           InitializeComponent();
 
-            MainPage = new FaceNews.MainPage();
+         
+            
         }
 
         protected override void OnStart()
