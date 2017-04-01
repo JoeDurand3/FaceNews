@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
 namespace FaceNews
 {
-    public partial class MainPage : ContentPage
+    public class Error
     {
-        public MainPage()
-        {
-            InitializeComponent();
-        }
+        public string id { get; set; }
+        public string message { get; set; }
     }
 }
