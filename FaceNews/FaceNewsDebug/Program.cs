@@ -11,13 +11,19 @@ namespace FaceNewsDebug
     {
         static void Main(string[] args)
         {
-            var test = TextAnalyticsService.Instance.GetTextAnalyticsAsync("1", "test this sentence");
-            Task.WaitAll(test);
 
+            var test2 = NewsService.Instance.GetNewsAsync();
+            Task.WaitAll(test2);
+            var test2Result = test2.Result;
+            Console.WriteLine(test2Result.value[0].name);
+
+            var test = TextAnalyticsService.Instance.GetTextAnalyticsAsync("1", test2Result.value[0].name);
+            Task.WaitAll(test);
             var testResult = test.Result;
-            Console.Write(testResult.documents.Count);
-           // byte[] byteData = Encoding.UTF8.GetBytes("");
+            Console.WriteLine(testResult.documents[0].score);
+
+
         }
- 
+
     }
 }

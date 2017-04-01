@@ -8,6 +8,7 @@ namespace FaceNews
 {
     public class Document
     {
+       //For TextAnalytics
        public string id { get; set; }
        public string score { get; set; }
        public string text { get; set; }
