@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FaceNews
+namespace FaceNews.Core
 {
-    public class Error
+    public class ImageRecord
     {
-        public string id { get; set; }
-        public string message { get; set; }
+        public Thumbnail thumbnail { get; set; }
     }
 }

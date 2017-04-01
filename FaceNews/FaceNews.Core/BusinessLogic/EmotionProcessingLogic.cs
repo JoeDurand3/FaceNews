@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace FaceNews.BusinessLogic
+namespace FaceNews.Core.BusinessLogic
 {
     class EmotionProcessingLogic
     {

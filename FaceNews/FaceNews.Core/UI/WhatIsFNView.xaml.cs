@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace FaceNews.UI
+namespace FaceNews.Core.UI
 {
     public partial class WhatIsFNView : ContentPage
     {

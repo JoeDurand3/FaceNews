@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FaceNews
+namespace FaceNews.Core
 {
-    class TextAnalyticsRequest
+    public class NewsResponse
     {
-        public List<Document> documents { get; set; }
-
+        public List<Value> value { get; set; }
     }
 }

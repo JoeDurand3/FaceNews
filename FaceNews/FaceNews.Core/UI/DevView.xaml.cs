@@ -9,9 +9,9 @@ using Xamarin.Forms.Xaml;
 
 using Plugin.Media;
 
-using FaceNews.BusinessLogic;
+using FaceNews.Core.BusinessLogic;
 
-namespace FaceNews.UI
+namespace FaceNews.Core.UI
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DevView : ContentPage
