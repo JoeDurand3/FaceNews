@@ -32,7 +32,7 @@ namespace FaceNews.Core
         }
 
         /// <summary>
-        /// WCFs the inquiry asynchronous.
+        /// Asynchronous data push
         /// </summary>
         /// <param name="methodRequestType">Type of the method request.</param>
         /// <param name="service">The service.</param>

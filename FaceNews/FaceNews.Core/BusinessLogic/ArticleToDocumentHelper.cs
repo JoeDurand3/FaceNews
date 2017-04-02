@@ -3,6 +3,9 @@
 
 namespace FaceNews.Core.BusinessLogic
 {
+    /// <summary>
+    /// Helper Class that put News Article Json Info into Objects for Processing
+    /// </summary>
     static class ArticleToDocumentHelper
     {
         public static List<Document> toDocList(List<Article> articles)

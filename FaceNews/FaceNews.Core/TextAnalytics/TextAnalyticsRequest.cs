@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace FaceNews.Core
 {
-    //List of documents used to make up the API request 
+    /// <summary>
+    /// List of documents used to make up the API request 
+    /// </summary>
     class TextAnalyticsRequest
     {
         public List<Document> documents { get; set; }

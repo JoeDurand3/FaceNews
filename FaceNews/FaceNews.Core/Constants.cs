@@ -16,5 +16,6 @@ namespace FaceNews.Core
         public static string EmotionAPIURL = "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize/";
         public static string languages = "en";
         public static int HAPPINESS_SCALE_VALUE = 10;
+        public static String[] NewsCategories = { "Business", "Entertainment", "Health", "Politics", "ScienceAndTechnology", "Sports", "US/UK", "World" };
     }
 }

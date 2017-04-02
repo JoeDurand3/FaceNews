@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FaceNews.Core
-{ 
-    //List of Document and Error objects for API calls with multiple elements
+{
+    /// <summary>
+    /// List of Document and Error objects for API calls with multiple elements
+    /// </summary>
     public class SentimentResponse
     {
         public List<Document> documents { get; set; }

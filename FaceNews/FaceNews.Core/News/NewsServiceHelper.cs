@@ -19,9 +19,9 @@ namespace FaceNews.Core
         /// <param name="methodName">Name of the method.</param>
         /// <param name="request">The request object.</param>
         /// <returns></returns>
-        public static async Task<T> SendAync<T>(string service/*, string methodName*/)
+        public static async Task<T> SendAync<T>(string service, string methodName = "")
         {
-            string result = await SendAsync(HttpMethod.Get, service/*, methodName*/);
+            string result = await SendAsync(HttpMethod.Get, service, methodName);
             
             return DeserializeJson<T>(result);
         }
@@ -34,12 +34,16 @@ namespace FaceNews.Core
         /// <param name="methodName">Name of the method.</param>
         /// <param name="content">The content.</param>
         /// <returns>The result of the inquiry</returns>
-        private static async Task<string> SendAsync(HttpMethod methodRequestType, string service,/* string methodName,*/
+        private static async Task<string> SendAsync(HttpMethod methodRequestType, string service, string methodName = "",
             string content = "")
         {
             try
             {
-                string serviceUri = service/* + methodName*/;
+                String serviceUri;
+                if (methodName != "")
+                    serviceUri = service + "?Category=" + methodName;
+                else
+                    serviceUri = service;
                 HttpClient httpClient = new HttpClient();
                 HttpRequestMessage request = new HttpRequestMessage(methodRequestType, serviceUri);
                 //{
