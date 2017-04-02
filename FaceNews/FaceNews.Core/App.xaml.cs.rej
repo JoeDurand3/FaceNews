@@ -1,0 +1,9 @@
+diff a/FaceNews/FaceNews.Core/App.xaml.cs b/FaceNews/FaceNews.Core/App.xaml.cs	(rejected hunks)
+@@ -10,7 +10,6 @@
+     {
+         public App()
+         {
+-            MainPage = new UI.DevView();
+             InitializeComponent();MainPage = new NavigationPage();
+ 			MainPage.Navigation.PushAsync(new UI.NewsFeedView());
+ 			MainPage.Navigation.PushAsync(new UI.SourceSelectionView());
