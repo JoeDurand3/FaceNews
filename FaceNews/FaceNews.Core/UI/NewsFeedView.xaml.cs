@@ -4,40 +4,46 @@ using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
 
+using FaceNews.Core.BusinessLogic;
+
 namespace FaceNews.Core.UI
 {
 	public partial class NewsFeedView : ContentPage
 	{
-        public ObservableCollection<Article> articles { get; set; } = new ObservableCollection<Article>();
-
 		public NewsFeedView()
 		{
 			InitializeComponent();
-            listView.ItemsSource = articles;
-            listView.ItemSelected += ViewCell_Tapped;
-            refreshStories();
+            setup();
         }
 
-        private async void refreshStories()
+        private async void setup()
         {
-            var resp = await NewsService.Instance.GetNewsAsync();
-            foreach (Article a in resp.value)
-            {
-                articles.Add(a);
-            }
+            listView.ItemsSource = NewsEmotionLogic.Instance.currentArticles;
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += (s, e) => {
+                camButtonPressed(this, null);
+            };
+            cameraButton.GestureRecognizers.Add(tapGestureRecognizer);
+            var result = await NewsEmotionLogic.Instance.downloadStories();
+            handleError(result);
         }
 
-        private async void ViewCell_Tapped(object sender, SelectedItemChangedEventArgs e)
+        private async void camButtonPressed(object oberserver, EventArgs e)
         {
-            try
-            {
-                var uri = (e.SelectedItem as Article).url;
-                await Navigation.PushAsync(new WebPage(uri: uri));
-            }
-            catch (Exception)
-            {
+            var result = await NewsEmotionLogic.Instance.updateHappiness();
+            handleError(result);
+            handleError("happiness is " + NewsEmotionLogic.Instance.happiness);
+            result = await NewsEmotionLogic.Instance.updateStories();
+            handleError(result);
+        }
 
+        private async void handleError(string result)
+        {
+            if (result != null)
+            {
+                await DisplayAlert(title: "Whoops!", message: result, cancel: "Darn, OK.");
             }
         }
+
     }
 }

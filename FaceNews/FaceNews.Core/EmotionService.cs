@@ -11,6 +11,7 @@ namespace FaceNews.Core
 
         /*static void Main()
         {
+
             byte[] dataIn = Encoding.UTF8.GetBytes("{ \"url\": \"http://www.apimages.com/Images/Ap_Creative_Stock_Header.jpg\" }");
             getEmotion(dataIn);
         }*/
