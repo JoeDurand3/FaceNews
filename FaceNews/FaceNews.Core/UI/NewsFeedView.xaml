@@ -6,9 +6,6 @@
 			 Title = "Stfu Pls">
 	
 	<ContentPage.Content>
-		<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
 		<ListView  x:Name="listView" RowHeight="300" Margin = "10">
 			<ListView.ItemTemplate>
 				<DataTemplate>

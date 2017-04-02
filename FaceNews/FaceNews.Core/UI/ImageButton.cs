@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace FaceNews;
+namespace FaceNews
 {
     /// <summary>
     /// A control with an image and text.
