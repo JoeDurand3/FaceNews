@@ -15,7 +15,14 @@ namespace FaceNewsDebug
             var test2 = NewsService.Instance.GetNewsAsync();
             Task.WaitAll(test2);
             var test2Result = test2.Result;
-            Console.WriteLine(test2Result.value[0].name);
+            try
+            {
+                Console.WriteLine(test2Result.value[0].name);
+            }
+            catch(NullReferenceException e)
+            {
+                Console.WriteLine(e.Message); 
+            }
 
             var test = TextAnalyticsService.Instance.GetTextAnalyticsAsync("1", test2Result.value[0].name);
             Task.WaitAll(test);
