@@ -23,11 +23,7 @@ namespace FaceNewsDebug
             {
                 Console.WriteLine(e.Message); 
             }
-
-            var test = TextAnalyticsService.Instance.GetTextAnalyticsAsync("1", test2Result.value[0].name);
-            Task.WaitAll(test);
-            var testResult = test.Result;
-            Console.WriteLine(testResult.documents[0].score);
+            
 
 
         }

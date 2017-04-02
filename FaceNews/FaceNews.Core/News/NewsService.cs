@@ -33,13 +33,6 @@ namespace FaceNews.Core
             var resp = await NewsServiceHelper.SendAync<NewsResponse>(
               Constants.NewsAPIURL/*, newsCategory*/);
             return resp;
-
-            foreach (Article a in resp.value)
-            {
-                a.image.imgdata = await ServiceHelper.DownloadRemoteImageFile(a.image.thumbnail.contentUrl);
-            }
-
-          
         }
     }
 }

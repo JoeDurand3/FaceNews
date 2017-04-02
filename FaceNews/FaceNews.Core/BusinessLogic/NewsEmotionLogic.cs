@@ -3,14 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace FaceNews.Core.BusinessLogic
 {
     public class NewsEmotionLogic
     {
         private List<Article> _allArticles = null;
-        private List<Article> _currentArticles = null;
+        private ObservableCollection<Article> _currentArticles = null;
         private int _happiness;
+
+        public ObservableCollection<Article> currentArticles
+        {
+            get
+            {
+                return _currentArticles;
+            }
+        }
+
+        /// <summary>
+        /// Gets the happiness.
+        /// </summary>
+        /// <value>
+        /// The happiness.
+        /// </value>
+        public int happiness
+        {
+            get
+            {
+                return _happiness;
+            }
+        }
 
         /// <summary>
         /// 
@@ -30,6 +54,7 @@ namespace FaceNews.Core.BusinessLogic
             try
             {
                 _allArticles = await NewsProcessingLogic.Instance.processArticles();
+
                 return null;
             }
             catch (Exception e)
@@ -38,12 +63,21 @@ namespace FaceNews.Core.BusinessLogic
             }
         }
 
+        /// <summary>
+        /// Updates the happiness stories.
+        /// </summary>
+        /// <returns></returns>
         public async Task<string> updateStories()
         {
             try
             {
-                _allArticles = await NewsProcessingLogic.Instance.processArticles();
-                _currentArticles = emotionalNewsInterface(_allArticles, _happiness);
+                var arts = emotionalNewsInterface(_allArticles, _happiness);
+                _currentArticles.Clear();
+
+                foreach (Article a in arts)
+                {
+                    _currentArticles.Add(a);
+                }
                 return null;
             }
             catch (Exception e)

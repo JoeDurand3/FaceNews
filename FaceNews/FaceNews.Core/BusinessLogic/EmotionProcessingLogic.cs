@@ -11,7 +11,7 @@ using System.IO;
 
 namespace FaceNews.Core.BusinessLogic
 {
-    class EmotionProcessingLogic
+    public class EmotionProcessingLogic
     {
         public static EmotionProcessingLogic Instance { get; } = new EmotionProcessingLogic();
 

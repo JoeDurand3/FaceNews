@@ -28,6 +28,10 @@ namespace FaceNews.Core.BusinessLogic
 
         }
 
+        /// <summary>
+        /// Downloads the latest articles and determines their sentiment
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Article>> processArticles()
         {
             var articles = await getArticles();

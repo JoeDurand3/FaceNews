@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace FaceNews;
+namespace FaceNews
 {
     /// <summary>
     /// A control with an image and text.
@@ -26,8 +26,7 @@ namespace FaceNews;
         /// </value>
         public ImageSource Source
         {
-            get { return _image.Source; }
-            set { _image.Source = value; }
+            set { _image.Source = "angry"; }
         }
 
         /// <summary>

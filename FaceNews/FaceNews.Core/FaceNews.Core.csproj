@@ -60,6 +60,7 @@
     <Compile Include="UI\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\BusyIndicator.cs" />
     <Compile Include="UI\ImageButton.cs" />
     <Compile Include="UI\WebPage.xaml.cs">
       <DependentUpon>WebPage.xaml</DependentUpon>

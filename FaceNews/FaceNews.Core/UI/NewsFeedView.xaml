@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:Controls="clr-namespace:FaceNews;assembly=FaceNews"
+             xmlns:Controls="clr-namespace:FaceNews;assembly=FaceNews.Core"
              x:Class="FaceNews.Core.UI.NewsFeedView"
-			 Title = "Stfu Pls">
-	
-	<ContentPage.Content>
-		<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-		<ListView  x:Name="listView" RowHeight="300" Margin = "10">
+			 Title = "FaceNews"
+             >
+
+    <ContentPage.Content>
+        <Grid>
+        <ListView  
+            Grid.Row="0"
+            Grid.Column="0"
+            x:Name="listView" RowHeight="300" Margin = "10">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>
@@ -25,5 +27,11 @@
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
-	</ContentPage.Content>
+            <Controls:ImageButton x:Name="cameraButton"
+                                  VerticalOptions="End"
+                                Grid.Row="0"
+                                  Grid.Column="0"
+                                  Source="happy"/>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>
