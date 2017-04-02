@@ -35,12 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\ArticleToDocumentHelper.cs" />
     <Compile Include="BusinessLogic\EmotionProcessingLogic.cs" />
+    <Compile Include="BusinessLogic\NewsEmotionLogic.cs" />
     <Compile Include="BusinessLogic\NewsProcessingLogic.cs" />
     <Compile Include="Constants.cs" />
     <EmbeddedResource Include="UI\DevView.xaml.cs">
       <DependentUpon>DevView.xaml</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="EmotionService.cs" />
     <Compile Include="News\ImageRecord.cs" />
     <Compile Include="News\NewsResponse.cs" />
     <Compile Include="News\NewsService.cs" />
@@ -56,6 +59,10 @@
     <Compile Include="TextAnalytics\TextAnalyticsService.cs" />
     <Compile Include="UI\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ImageButton.cs" />
+    <Compile Include="UI\WebPage.xaml.cs">
+      <DependentUpon>WebPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\WhatIsFNView.xaml.cs">
       <DependentUpon>WhatIsFNView.xaml</DependentUpon>
@@ -75,14 +82,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.ProjectOxford.Common, Version=1.0.324.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ProjectOxford.Common.1.0.324\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Microsoft.ProjectOxford.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.ProjectOxford.Emotion, Version=1.0.336.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ProjectOxford.Emotion.1.0.336\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Microsoft.ProjectOxford.Emotion.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -95,12 +94,6 @@
       <HintPath>..\packages\Xam.Plugin.Media.2.6.2\lib\portable-net45+wp80+win8+wpa81\Plugin.Media.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="PresentationCore">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\PresentationCore.dll</HintPath>
-    </Reference>
-    <Reference Include="PresentationFramework">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\PresentationFramework.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http.Extensions, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Extensions.dll</HintPath>
       <Private>True</Private>
@@ -109,8 +102,8 @@
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Primitives.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="WindowsBase">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\WindowsBase.dll</HintPath>
+    <Reference Include="System.Web">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Forms.2.3.3.193\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>
@@ -141,6 +134,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UI\App.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UI\WebPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

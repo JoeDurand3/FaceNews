@@ -28,6 +28,14 @@ namespace FaceNews.Core.BusinessLogic
 
         }
 
+        public async Task<List<Article>> processArticles()
+        {
+            var articles = await getArticles();
+            articles = await evaluateArticles(articles);
+            articles = sortArticles(articles);
+            return articles;
+        }
+
         /// <summary>
         /// Gets the articles.
         /// </summary>
@@ -44,8 +52,15 @@ namespace FaceNews.Core.BusinessLogic
         /// <returns></returns>
         private async Task<List<Article>> evaluateArticles(List<Article> articles)
         {
-            return articles;
+            var docs = ArticleToDocumentHelper.toDocList(articles);
+            var resp = await TextAnalyticsService.Instance.GetTextAnalyticsAsync(documents: docs);
 
+            for (int i = 0; i < docs.Count; i++)
+            {
+                articles[i].sentiment = resp.documents[i].score;
+            }
+
+            return articles;
         }
 
         /// <summary>
@@ -54,9 +69,14 @@ namespace FaceNews.Core.BusinessLogic
         /// </summary>
         /// <param name="weight">The weight.</param>
         /// <returns></returns>
-        private List<Article> sortArticles(List<Article> articles, float weight)
+        private List<Article> sortArticles(List<Article> articles)
         {
-            return articles;
+            var RA = articles.ToArray();
+            Array.Sort(RA, delegate (Article a, Article b)
+            {
+                return a.sentiment.CompareTo(b.sentiment);
+            });
+            return RA.ToList<Article>();
         }
 
     }

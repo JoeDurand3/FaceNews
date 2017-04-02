@@ -8,25 +8,36 @@ namespace FaceNews.Core.UI
 {
 	public partial class NewsFeedView : ContentPage
 	{
-		public ObservableCollection<Article> articles { get; set; }
+        public ObservableCollection<Article> articles { get; set; } = new ObservableCollection<Article>();
 
 		public NewsFeedView()
 		{
 			InitializeComponent();
-
-			articles = new ObservableCollection<Article>();
             listView.ItemsSource = articles;
-
+            listView.ItemSelected += ViewCell_Tapped;
             refreshStories();
-            
-		}
+        }
 
         private async void refreshStories()
         {
-            listView.IsRefreshing = true;
             var resp = await NewsService.Instance.GetNewsAsync();
-            articles = new ObservableCollection<Article>(collection: resp.value);
-            listView.IsRefreshing = false;
+            foreach (Article a in resp.value)
+            {
+                articles.Add(a);
+            }
         }
-	}
+
+        private async void ViewCell_Tapped(object sender, SelectedItemChangedEventArgs e)
+        {
+            try
+            {
+                var uri = (e.SelectedItem as Article).url;
+                await Navigation.PushAsync(new WebPage(uri: uri));
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+    }
 }

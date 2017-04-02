@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
-using System.IO;
+
 using Plugin.Media;
 
 using Xamarin.Forms;
+using System.IO;
 
 namespace FaceNews.Core.BusinessLogic
 {
@@ -38,13 +38,14 @@ namespace FaceNews.Core.BusinessLogic
         {
             
         }
+        
 
         /// <summary>
         /// Gets the image.
         /// </summary>
         /// <param name="observer">The observer.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private async Task<byte[]> getImage(object observer, EventArgs e)
+        public async Task<byte[]> getImage()
         {
             await CrossMedia.Current.Initialize();
             try
@@ -55,32 +56,17 @@ namespace FaceNews.Core.BusinessLogic
                     DefaultCamera = Plugin.Media.Abstractions.CameraDevice.Front
                 });
 
-                _imageData = ImageSource.FromStream(() => file.GetStream());
-                
-              
-              
-                PngBitmapEncoder pngEncoder = new PngBitmapEncoder();
-                BitmapEncoder encoder = pngEncoder;
-                byte[] bytes = null;
-                var dataInBytes = _imageData as BitmapSource;
-                if (dataInBytes != null)
-                {
-                    encoder.Frames.Add(BitmapFrame.Create(dataInBytes));
-
-                    using (var stream = new MemoryStream())
-                    {
-                        encoder.Save(stream);
-                        bytes = stream.ToArray();
-                    }
-                }
-                return bytes; 
-                
+                var memoryStream = new MemoryStream();
+                file.GetStream().CopyTo(memoryStream);
+                file.Dispose();
+                return memoryStream.ToArray();
             }
             catch (Exception)
             {
-                return null; 
-                //do nothing
+
             }
+
+            return null;
         }
 
     }
