@@ -21,7 +21,7 @@ namespace FaceNews.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new FaceNews.App());
+            LoadApplication(new FaceNews.Core.App());
         }
     }
 }
