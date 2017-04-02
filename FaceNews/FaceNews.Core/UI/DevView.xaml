@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Controls="clr-namespace:FaceNews;assembly=FaceNews"
+             x:Class="FaceNews.Core.UI.DevView">
+    <StackLayout Margin="30">
+        <Label HorizontalOptions="CenterAndExpand"
+            Text="How happy are you?"/>
+        <Slider x:Name="MoodSlider"
+                Margin="30"/>
+        <Label FontSize="24"
+               BindingContext="{Reference Name = MoodSlider}"
+               Text="{Binding Value}"
+               HorizontalOptions="Center"/>
+        <Image x:Name="ImageView"
+               Source="sad"
+               WidthRequest="200"/>
+        <Button x:Name="CaptureButton"
+                Text="Capture"/>
+    </StackLayout>
+</ContentPage>

@@ -4,16 +4,14 @@ using System.Linq;
 using System.Diagnostics;
 using Xamarin.Forms;
 
-namespace FaceNews
+namespace FaceNews.Core
 {
     public partial class App : Application
     {
         public App()
         {
-           InitializeComponent();
-
-         
-            
+            InitializeComponent();
+            MainPage = new UI.DevView();
         }
 
         protected override void OnStart()

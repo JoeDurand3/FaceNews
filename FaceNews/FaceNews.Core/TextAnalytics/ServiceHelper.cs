@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace FaceNews
+namespace FaceNews.Core
 {
     /// <summary>
     /// Shared service helpers.
@@ -52,7 +52,7 @@ namespace FaceNews
                 string returnString = await response.Content.ReadAsStringAsync();
                 return returnString;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return string.Empty;
             }
