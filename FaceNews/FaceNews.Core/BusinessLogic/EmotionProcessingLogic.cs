@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Media.Imaging;
+using System.IO;
 using Plugin.Media;
 
 using Xamarin.Forms;
@@ -43,7 +44,7 @@ namespace FaceNews.Core.BusinessLogic
         /// </summary>
         /// <param name="observer">The observer.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private async void getImage(object observer, EventArgs e)
+        private async Task<byte[]> getImage(object observer, EventArgs e)
         {
             await CrossMedia.Current.Initialize();
             try
@@ -55,9 +56,29 @@ namespace FaceNews.Core.BusinessLogic
                 });
 
                 _imageData = ImageSource.FromStream(() => file.GetStream());
+                
+              
+              
+                PngBitmapEncoder pngEncoder = new PngBitmapEncoder();
+                BitmapEncoder encoder = pngEncoder;
+                byte[] bytes = null;
+                var dataInBytes = _imageData as BitmapSource;
+                if (dataInBytes != null)
+                {
+                    encoder.Frames.Add(BitmapFrame.Create(dataInBytes));
+
+                    using (var stream = new MemoryStream())
+                    {
+                        encoder.Save(stream);
+                        bytes = stream.ToArray();
+                    }
+                }
+                return bytes; 
+                
             }
             catch (Exception)
             {
+                return null; 
                 //do nothing
             }
         }
