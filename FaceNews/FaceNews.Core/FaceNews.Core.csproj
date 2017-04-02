@@ -40,9 +40,9 @@
     </Compile>
     <Compile Include="BusinessLogic\EmotionProcessingLogic.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="UI\DevView.xaml.cs">
+    <EmbeddedResource Include="UI\DevView.xaml.cs">
       <DependentUpon>DevView.xaml</DependentUpon>
-    </Compile>
+    </EmbeddedResource>
     <Compile Include="News\ImageRecord.cs" />
     <Compile Include="News\NewsResponse.cs" />
     <Compile Include="News\NewsService.cs" />
