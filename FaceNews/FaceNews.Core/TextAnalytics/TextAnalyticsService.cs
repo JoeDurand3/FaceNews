@@ -28,17 +28,11 @@ namespace FaceNews.Core
         /// <param name="textId">The body identifier.</param>
         /// <param name="textBody">The text to be analyzed.</param>
         /// <returns></returns>
-        public async Task<SentimentResponse> GetTextAnalyticsAsync(string textId, string textBody )
+        public async Task<SentimentResponse> GetTextAnalyticsAsync(List<Document> documents)
         {
 
             var req = new TextAnalyticsRequest();
-            req.documents = new List<Document>();
-            req.documents.Add(new Document
-            {
-                language = Constants.languages,
-                id = textId,
-                text = textBody
-            });
+            req.documents = documents;
 
            return await ServiceHelper.SendAync<SentimentResponse>(
              Constants.TextAnalyticsAPIURL, "sentiment", req);

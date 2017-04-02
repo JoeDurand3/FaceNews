@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Plugin.Media;
 
 using Xamarin.Forms;
+using System.IO;
 
 namespace FaceNews.Core.BusinessLogic
 {
@@ -37,13 +38,14 @@ namespace FaceNews.Core.BusinessLogic
         {
             
         }
+        
 
         /// <summary>
         /// Gets the image.
         /// </summary>
         /// <param name="observer">The observer.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private async void getImage(object observer, EventArgs e)
+        public async Task<byte[]> getImage()
         {
             await CrossMedia.Current.Initialize();
             try
@@ -54,12 +56,17 @@ namespace FaceNews.Core.BusinessLogic
                     DefaultCamera = Plugin.Media.Abstractions.CameraDevice.Front
                 });
 
-                _imageData = ImageSource.FromStream(() => file.GetStream());
+                var memoryStream = new MemoryStream();
+                file.GetStream().CopyTo(memoryStream);
+                file.Dispose();
+                return memoryStream.ToArray();
             }
             catch (Exception)
             {
-                //do nothing
+
             }
+
+            return null;
         }
 
     }

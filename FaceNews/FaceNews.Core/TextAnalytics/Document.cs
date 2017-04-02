@@ -10,8 +10,8 @@ namespace FaceNews.Core
     public class Document
     {
        //For TextAnalytics
-       public string id { get; set; }
-       public string score { get; set; }
+       public int id { get; set; }
+       public double score { get; set; }
        public string text { get; set; }
        public string language { get; set; }
     }

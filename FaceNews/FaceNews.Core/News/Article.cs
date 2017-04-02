@@ -10,11 +10,15 @@ namespace FaceNews.Core
 {
     public class Article
     {
+        static int nextId = 0;
+
+        public int id { get; set; }
         public string name { get; set; }
         public string url { get; set; }
         public ImageRecord image { get; set; }
         public string description { get; set; }
         public DateTime datePublished { get; set; }
+        public double sentiment { get; set; }
 
         /// <summary>
         /// Gets the image.
@@ -29,5 +33,11 @@ namespace FaceNews.Core
                 return image.imgdata;
             }
         }
+
+        public Article()
+        {
+            id = nextId++;
+        }
+
     }
 }

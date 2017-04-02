@@ -8,14 +8,15 @@ namespace FaceNews.Core
 {
     static class EmotionService
     {
-        static void Main()
+
+        /*static void Main()
         {
 
             byte[] dataIn = Encoding.UTF8.GetBytes("{ \"url\": \"http://www.apimages.com/Images/Ap_Creative_Stock_Header.jpg\" }");
             getEmotion(dataIn);
-        }
+        }*/
 
-        static async Task<int> getEmotion(byte[] dataInput)
+        public static async Task<int> getEmotion(byte[] dataInput)
         {
             var client = new HttpClient();
 
@@ -30,25 +31,15 @@ namespace FaceNews.Core
             byte[] byteData = dataInput;
             using (var content = new ByteArrayContent(byteData))
             {
-                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
                 //application/json for url, application/octet-stream for binary data
                 response = await client.PostAsync(uri, content);
                 String res = await response.Content.ReadAsStringAsync();
-                //Console.Write(res);
                 dynamic x = Newtonsoft.Json.JsonConvert.DeserializeObject(res);
-                var Scores = x[0].scores;
-                double happy = Scores.happiness;
-                //Happiness Algorithm
-                if (happy > Scores.anger && happy > Scores.contempt && happy > Scores.disgust && happy > Scores.fear && happy > Scores.neutral && happy > Scores.sadness && happy > Scores.surprise)
-                    return 3;
-                else if (Scores.neutral > 0.5)
-                    return 2;
-                else
-                    return 1;
-                {
-  
-                }
+                var Scores = x[0].scores.happiness * Constants.HAPPINESS_SCALE_VALUE;
             }
+
+            return 0;
 
         }
     }
