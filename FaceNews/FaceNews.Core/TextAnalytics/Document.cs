@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace FaceNews.Core
 {
-    //document class for request and response body
+    /// <summary>
+    /// document class for request and response body
+    /// </summary>
     public class Document
     {
-       //For TextAnalytics
+       /// <summary>
+       /// For Text Analysis
+       /// </summary>
        public int id { get; set; }
        public double score { get; set; }
        public string text { get; set; }

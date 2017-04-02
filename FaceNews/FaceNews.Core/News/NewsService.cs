@@ -23,15 +23,17 @@ namespace FaceNews.Core
         }
 
         /// <summary>
-        /// Gets the citizen bank balance asynchronous.
+        /// Send Different type of Request to Bing News Search API
         /// </summary>
-        /// <param name="citizenId">The citizen identifier.</param>
-        /// <param name="vendorId">The vendor identifier.</param>
+        /// <param name="newsCategory"></param>
         /// <returns></returns>
-        public async Task<NewsResponse> GetNewsAsync(/*string newsCategory*/)
+        public async Task<NewsResponse> GetNewsAsync(string newsCategory = "")
         {
-            var resp = await NewsServiceHelper.SendAync<NewsResponse>(
-              Constants.NewsAPIURL/*, newsCategory*/);
+            dynamic resp;
+            if (newsCategory != "")
+                resp = await NewsServiceHelper.SendAync<NewsResponse>(Constants.NewsAPIURL, newsCategory);
+            else
+                resp = await NewsServiceHelper.SendAync<NewsResponse>(Constants.NewsAPIURL);
             return resp;
         }
     }

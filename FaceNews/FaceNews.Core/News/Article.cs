@@ -8,6 +8,9 @@ using Xamarin.Forms;
 
 namespace FaceNews.Core
 {
+    /// <summary>
+    /// List of Variable Making up the API Call
+    /// </summary>
     public class Article
     {
         static int nextId = 0;
