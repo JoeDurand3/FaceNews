@@ -35,9 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
     <Compile Include="BusinessLogic\EmotionProcessingLogic.cs" />
     <Compile Include="BusinessLogic\NewsProcessingLogic.cs" />
     <Compile Include="Constants.cs" />
@@ -57,10 +54,12 @@
     <Compile Include="TextAnalytics\ServiceHelper.cs" />
     <Compile Include="TextAnalytics\TextAnalyticsRequest.cs" />
     <Compile Include="TextAnalytics\TextAnalyticsService.cs" />
+    <Compile Include="UI\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\WhatIsFNView.xaml.cs">
       <DependentUpon>WhatIsFNView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\NewsFeedViewModel.cs" />
     <EmbeddedResource Include="UI\NewsFeedView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -122,17 +121,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>
-      </SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\DevView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\WhatIsFNView.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UI\App.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

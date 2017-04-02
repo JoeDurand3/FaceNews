@@ -12,8 +12,8 @@
 						<StackLayout Orientation="Horizontal" HorizontalOptions="Center">
 							<StackLayout Orientation="Vertical">
 							<Image Source="{Binding Image}" HorizontalOptions= "CenterAndExpand" HeightRequest = "200" Margin = "10" />
-								<Label Text = "{Binding Name}" FontSize="24" AbsoluteLayout.LayoutBounds="0.25, 0.25, 400, 40"/>
-								<Label Text = "{Binding Type}" AbsoluteLayout.LayoutBounds="50, 35, 200, 25"/>
+								<Label Text = "{Binding name}" FontSize="24" AbsoluteLayout.LayoutBounds="0.25, 0.25, 400, 40"/>
+								<Label Text = "{Binding description}" AbsoluteLayout.LayoutBounds="50, 35, 200, 25"/>
 							</StackLayout>
 						</StackLayout>
 					</ViewCell>
