@@ -8,12 +8,12 @@ namespace FaceNews.Core
 {
     static class EmotionService
     {
-        static void Main()
-        {
+        //static void Main()
+        //{
 
-            byte[] dataIn = Encoding.UTF8.GetBytes("{ \"url\": \"http://www.apimages.com/Images/Ap_Creative_Stock_Header.jpg\" }");
-            getEmotion(dataIn);
-        }
+        //    byte[] dataIn = Encoding.UTF8.GetBytes("{ \"url\": \"http://www.apimages.com/Images/Ap_Creative_Stock_Header.jpg\" }");
+        //    //getEmotion(dataIn);
+        //}
 
         static async Task<int> getEmotion(byte[] dataInput)
         {
@@ -30,7 +30,7 @@ namespace FaceNews.Core
             byte[] byteData = dataInput;
             using (var content = new ByteArrayContent(byteData))
             {
-                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
                 //application/json for url, application/octet-stream for binary data
                 response = await client.PostAsync(uri, content);
                 String res = await response.Content.ReadAsStringAsync();
