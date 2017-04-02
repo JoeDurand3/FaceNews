@@ -16,8 +16,7 @@ namespace FaceNews.Core.UI
             listView.ItemsSource = articles;
             listView.ItemSelected += ViewCell_Tapped;
             refreshStories();
-            
-		}
+        }
 
         private async void refreshStories()
         {
