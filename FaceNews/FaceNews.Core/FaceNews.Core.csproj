@@ -43,7 +43,6 @@
     <EmbeddedResource Include="UI\DevView.xaml.cs">
       <DependentUpon>DevView.xaml</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="EmotionService.cs" />
     <Compile Include="News\ImageRecord.cs" />
     <Compile Include="News\NewsResponse.cs" />
     <Compile Include="News\NewsService.cs" />
@@ -81,6 +80,10 @@
     <Compile Include="UI\SourceSelectionView.xaml.cs">
       <DependentUpon>SourceSelectionView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Emotions\Scores.cs" />
+    <Compile Include="Emotions\EmotionResponse.cs" />
+    <Compile Include="Emotions\EmotionService.cs" />
+    <Compile Include="Emotions\EmotionServiceHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -125,11 +128,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UI\DevView.xaml">
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\WhatIsFNView.xaml">
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
@@ -144,6 +147,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Emotions\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

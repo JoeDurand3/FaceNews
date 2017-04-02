@@ -9,8 +9,8 @@ namespace FaceNews.Core.BusinessLogic
 {
     public class NewsEmotionLogic
     {
-        private List<Article> _allArticles = null;
-        private int _happiness = 7;
+		private List<Article> _allArticles = new List<Article>();
+		private EmotionResponse _emotions = new EmotionResponse();
 
         public ObservableCollection<Article> currentArticles = new ObservableCollection<Article>();
 
@@ -20,11 +20,11 @@ namespace FaceNews.Core.BusinessLogic
         /// <value>
         /// The happiness.
         /// </value>
-        public int happiness
+        public EmotionResponse emotions
         {
             get
             {
-                return _happiness;
+                return _emotions;
             }
         }
 
@@ -63,17 +63,13 @@ namespace FaceNews.Core.BusinessLogic
         {
             try
             {
-                var arts = emotionalNewsInterface(_allArticles, _happiness);
-                currentArticles.Clear();
+				var arts = emotionalNewsInterface(_allArticles, (int)_emotions.scores.happiness);
+				currentArticles.Clear();
 
-                /*foreach (Article a in arts)
-                {
-                    currentArticles.Add(a);
-                }*/
-                foreach (Article a in _allArticles)
-                {
-                    currentArticles.Add(a);
-                }
+				for (int i = 0; i < arts.Count; i++)
+				{
+					currentArticles.Add(arts[i]);
+				}
                 return null;
             }
             catch (Exception e)
@@ -91,7 +87,8 @@ namespace FaceNews.Core.BusinessLogic
             try
             {
                 byte[] face = await EmotionProcessingLogic.Instance.getImage();
-                _happiness = await EmotionService.getEmotion(face);
+                
+				_emotions = await EmotionService.getEmotion(face);
                 return null;
             }
             catch(Exception e)
@@ -101,20 +98,25 @@ namespace FaceNews.Core.BusinessLogic
         }
 
         private List<Article> emotionalNewsInterface(List <Article> articles, int happiness)
-        {
-            var list = new List<Article>();
+		{
+			var newArts = new List<Article>();
+
+			foreach (Article a in articles)
+			{
+				newArts.Add(a.clone());
+			}
 
             if (happiness >= 7)
             {
-                return articles.Where<Article>(art => art.sentiment <= 3).ToList();
+				return newArts.Where<Article>(art => art.sentiment <= 3).ToList();
             }
             else if (happiness >= 3)
             {
-                return articles.Where<Article>(art => art.sentiment > 3 && art.sentiment < 7).ToList();
+                return newArts.Where<Article>(art => art.sentiment > 3 && art.sentiment < 7).ToList();
             }
             else
             {
-                return articles.Where<Article>(art => art.sentiment >= 7).ToList();
+                return newArts.Where<Article>(art => art.sentiment >= 7).ToList();
             }
         }
 

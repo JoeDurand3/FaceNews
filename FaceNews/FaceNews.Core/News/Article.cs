@@ -42,5 +42,17 @@ namespace FaceNews.Core
             id = nextId++;
         }
 
+		public Article clone()
+		{
+			var ar = new Article();
+			ar.id = id;
+			ar.image = image;
+			ar.name = name;
+			ar.description = description;
+			ar.sentiment = sentiment;
+			ar.datePublished = datePublished;
+			return ar;
+		}
+
     }
 }

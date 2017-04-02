@@ -61,7 +61,7 @@ namespace FaceNews.Core.BusinessLogic
 
             for (int i = 0; i < docs.Count; i++)
             {
-                articles[i].sentiment = resp.documents[i].score;
+                articles[i].sentiment = resp.documents[i].score * 10;
             }
 
             return articles;
