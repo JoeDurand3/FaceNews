@@ -25,8 +25,8 @@ namespace FaceNews.Core
         /// <summary>
         /// Gets the citizen bank balance asynchronous.
         /// </summary>
-        /// <param name="citizenId">The citizen identifier.</param>
-        /// <param name="vendorId">The vendor identifier.</param>
+        /// <param name="textId">The body identifier.</param>
+        /// <param name="textBody">The text to be analyzed.</param>
         /// <returns></returns>
         public async Task<SentimentResponse> GetTextAnalyticsAsync(string textId, string textBody )
         {
