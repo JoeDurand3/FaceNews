@@ -22,16 +22,13 @@ namespace FaceNews.Core
         {
         }
 
-        /// <summary>
-        /// Gets the citizen bank balance asynchronous.
-        /// </summary>
-        /// <param name="citizenId">The citizen identifier.</param>
-        /// <param name="vendorId">The vendor identifier.</param>
-        /// <returns></returns>
-        public async Task<NewsResponse> GetNewsAsync(/*string newsCategory*/)
+        public async Task<NewsResponse> GetNewsAsync(string newsCategory = "")
         {
-            var resp = await NewsServiceHelper.SendAync<NewsResponse>(
-              Constants.NewsAPIURL/*, newsCategory*/);
+            dynamic resp;
+            if (newsCategory != "")
+                resp = await NewsServiceHelper.SendAync<NewsResponse>(Constants.NewsAPIURL, newsCategory);
+            else
+                resp = await NewsServiceHelper.SendAync<NewsResponse>(Constants.NewsAPIURL);
             return resp;
 
             foreach (Article a in resp.value)
