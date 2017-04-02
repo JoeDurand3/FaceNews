@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace FaceNews.Core
 {
+    //document class for request and response body
     public class Document
     {
        //For TextAnalytics
