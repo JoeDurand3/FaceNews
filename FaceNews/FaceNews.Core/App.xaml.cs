@@ -10,8 +10,10 @@ namespace FaceNews.Core
     {
         public App()
         {
-            InitializeComponent();
-            MainPage = new UI.DevView();
+            InitializeComponent();MainPage = new NavigationPage();
+			MainPage.Navigation.PushAsync(new UI.NewsFeedView());
+			MainPage.Navigation.PushAsync(new UI.SourceSelectionView());
+			MainPage.Navigation.PushAsync(new UI.DevView());
         }
 
         protected override void OnStart()

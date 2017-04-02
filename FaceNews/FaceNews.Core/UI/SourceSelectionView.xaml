@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Controls="clr-namespace:FaceNews;assembly=FaceNews"
+             x:Class="FaceNews.Core.UI.SourceSelectionView"
+			 Title = "Asdf">
+	<ContentPage.Content>
+		<ListView  x:Name="asdfView" RowHeight="120">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+							<StackLayout Orientation="Vertical">
+							<Image Source="{Binding Image}" HorizontalOptions= "Center" HeightRequest = "50" Margin = "15" />
+							<Label Text = "{Binding Name}" FontSize="12" HorizontalOptions="Center"/>
+							</StackLayout>
+							<StackLayout Orientation="Vertical">
+							<Image Source="{Binding Image2}" HorizontalOptions= "Center" HeightRequest = "50" Margin = "15" />
+							<Label Text = "{Binding Name2}" FontSize="12" HorizontalOptions="Center"/>
+							</StackLayout>
+							<StackLayout Orientation="Vertical">
+							<Image Source="{Binding Image3}" HorizontalOptions= "CenterAndExpand" HeightRequest = "50" Margin = "15" />
+							<Label Text = "{Binding Name3}" FontSize="12" HorizontalOptions="Center"/>
+							</StackLayout>
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</ContentPage.Content>
+</ContentPage>

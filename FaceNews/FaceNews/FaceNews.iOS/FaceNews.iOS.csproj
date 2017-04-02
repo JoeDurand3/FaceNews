@@ -133,6 +133,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\happy.png" />
+    <BundleResource Include="Resources\MyEqualizer.png" />
+    <BundleResource Include="Resources\lindsey.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\angry.png" />

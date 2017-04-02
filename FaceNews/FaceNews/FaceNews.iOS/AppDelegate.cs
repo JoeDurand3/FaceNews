@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using FaceNews.Core;
 
 namespace FaceNews.iOS
 {
@@ -22,7 +23,7 @@ namespace FaceNews.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            Rox.CameraIos.Init();
+            //Rox.CameraIos.Init();
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 

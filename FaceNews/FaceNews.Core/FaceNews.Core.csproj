@@ -59,6 +59,20 @@
     <Compile Include="UI\WhatIsFNView.xaml.cs">
       <DependentUpon>WhatIsFNView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\NewsFeedViewModel.cs" />
+    <EmbeddedResource Include="UI\NewsFeedView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <Compile Include="UI\NewsFeedView.xaml.cs">
+      <DependentUpon>NewsFeedView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SourceSelectionViewModel.cs" />
+    <EmbeddedResource Include="UI\SourceSelectionView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <Compile Include="UI\SourceSelectionView.xaml.cs">
+      <DependentUpon>SourceSelectionView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.ProjectOxford.Common, Version=1.0.324.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
