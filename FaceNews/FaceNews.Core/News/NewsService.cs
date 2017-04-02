@@ -22,6 +22,11 @@ namespace FaceNews.Core
         {
         }
 
+        /// <summary>
+        /// Send Different type of Request to Bing News Search API
+        /// </summary>
+        /// <param name="newsCategory"></param>
+        /// <returns></returns>
         public async Task<NewsResponse> GetNewsAsync(string newsCategory = "")
         {
             dynamic resp;

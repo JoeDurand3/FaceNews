@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace FaceNews.Core
 {
+    /// <summary>
+    /// Helper Class for Retreving News Thumbnail Pic
+    /// </summary>
     public class Thumbnail
     {
         public string contentUrl { get; set; }
