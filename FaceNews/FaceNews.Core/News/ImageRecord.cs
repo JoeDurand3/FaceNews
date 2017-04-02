@@ -15,6 +15,12 @@ namespace FaceNews.Core
 
         public ImageRecord()
         {
+            
+        }
+
+        public async void downloadImg()
+        {
+            //imgdata = await ServiceHelper.DownloadRemoteImageFile(uri: thumbnail.contentUrl);
         }
     }
 }

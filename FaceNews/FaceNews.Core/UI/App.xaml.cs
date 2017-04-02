@@ -16,7 +16,7 @@ namespace FaceNews.Core
         public App()
         {
             InitializeComponent();
-            MainPage = new NewsFeedView();
+            MainPage = new NavigationPage(root: new NewsFeedView());
         }
     }
 }

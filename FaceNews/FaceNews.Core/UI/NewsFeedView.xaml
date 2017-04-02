@@ -5,15 +5,15 @@
              x:Class="FaceNews.Core.UI.NewsFeedView"
 			 Title = "Stfu Pls">
 	<ContentPage.Content>
-		<ListView  x:Name="listView" RowHeight="300">
-			<ListView.ItemTemplate>
+        <ListView  x:Name="listView" RowHeight="300">
+            <ListView.ItemTemplate>
 				<DataTemplate>
-					<ViewCell>
+					<ViewCell >
 						<StackLayout Orientation="Horizontal" HorizontalOptions="Center">
 							<StackLayout Orientation="Vertical">
 							<Image Source="{Binding Image}" HorizontalOptions= "CenterAndExpand" HeightRequest = "200" Margin = "10" />
-								<Label Text = "{Binding name}" FontSize="24" AbsoluteLayout.LayoutBounds="0.25, 0.25, 400, 40"/>
-								<Label Text = "{Binding description}" AbsoluteLayout.LayoutBounds="50, 35, 200, 25"/>
+								<Label Text = "{Binding name}" FontSize="24"/>
+								<Label Text = "{Binding description}"/>
 							</StackLayout>
 						</StackLayout>
 					</ViewCell>
