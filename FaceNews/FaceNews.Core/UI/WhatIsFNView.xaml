@@ -1,21 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FaceNews.Core.UI.WhatIsFNView">
+             x:Class="FaceNews.Core.UI.WhatIsFNView"
+             BackgroundColor="#7c7ec0">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="Maroon">
-            <Label x:Name="PromptField"
-                   Text="What is this?"/>
+        <StackLayout Margin="30"
+                     HorizontalOptions="CenterAndExpand">
+            <Label Text="What is this?"
+                   FontSize="20"
+                   HorizontalOptions="CenterAndExpand"/>
             <StackLayout x:Name="Visuals"
-                         Orientation="Horizontal">
-                <Image x:Name="faceImage" />
+                         Margin="30"
+                         Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand">
+                <Image x:Name="faceImage"
+                       Source="happy"
+                       WidthRequest="75"/>
                 <Image x:Name="plusImage"
                        WidthRequest="50"
-                       Source="plus.png"/>
-                <Image x:Name="newsImage"/>
+                       HorizontalOptions="Center"
+                       Source="plus"/>
+                <Image x:Name="newsImage"
+                       WidthRequest="75"
+                       Source="news"/>
             </StackLayout>
-            <Label x:Name="TitleField"
-                   Text="FaceNews"/>
+            <Label Text="FaceNews"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="32"/>
+            <Label FontSize="20"
+                   HorizontalTextAlignment="Center"
+                   Text="combines your feelings with some smart"/>
+            <Image HeightRequest="100"
+                   Source="microsoft"/>
+            <Label FontSize="20"
+                   HorizontalTextAlignment="Center"
+                   Text="tools to"/>
+            <StackLayout Orientation="Horizontal">
+                <Label FontSize="20"
+                       Margin="35,20,0,10"
+                       FontAttributes="Bold"
+                       Text="Bring you the news,"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label FontAttributes="Bold"
+                       FontSize="20"
+                        Margin="35,10,0,10"
+                       Text="But keep away demons :)"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
