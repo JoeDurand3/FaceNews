@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace CitizenApp.Core.Controls
+namespace FaceNews
 {
     /// <summary>
     /// An animated MBS-centric loading symbol that looks pretty spiffy.
@@ -19,8 +19,9 @@ namespace CitizenApp.Core.Controls
         /// </summary>
         public BusyIndicator()
 		{
-			Source = "mbs_busy_indicator.png";
+			Source = "angry";
 		}
+    
 
 		/// <summary>
 		/// Starts the indicator.

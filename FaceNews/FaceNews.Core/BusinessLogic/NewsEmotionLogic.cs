@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace FaceNews.Core.BusinessLogic
@@ -11,16 +10,9 @@ namespace FaceNews.Core.BusinessLogic
     public class NewsEmotionLogic
     {
         private List<Article> _allArticles = null;
-        private ObservableCollection<Article> _currentArticles = null;
-        private int _happiness;
+        private int _happiness = 7;
 
-        public ObservableCollection<Article> currentArticles
-        {
-            get
-            {
-                return _currentArticles;
-            }
-        }
+        public ObservableCollection<Article> currentArticles = new ObservableCollection<Article>();
 
         /// <summary>
         /// Gets the happiness.
@@ -72,11 +64,15 @@ namespace FaceNews.Core.BusinessLogic
             try
             {
                 var arts = emotionalNewsInterface(_allArticles, _happiness);
-                _currentArticles.Clear();
+                currentArticles.Clear();
 
-                foreach (Article a in arts)
+                /*foreach (Article a in arts)
                 {
-                    _currentArticles.Add(a);
+                    currentArticles.Add(a);
+                }*/
+                foreach (Article a in _allArticles)
+                {
+                    currentArticles.Add(a);
                 }
                 return null;
             }

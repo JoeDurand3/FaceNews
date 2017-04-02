@@ -26,7 +26,7 @@ namespace FaceNews
         /// </value>
         public ImageSource Source
         {
-            set { _image.Source = "angry"; }
+            set { _image.Source = "happy"; }
         }
 
         /// <summary>

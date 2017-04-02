@@ -6,6 +6,10 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Content;
+
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 
 namespace FaceNews.Droid
 {
@@ -21,12 +25,20 @@ namespace FaceNews.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new Core.App());
+            
         }
 
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
-            //PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnActivityResult(requestCode, resultCode, data);
         }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+        
 
     }
 
