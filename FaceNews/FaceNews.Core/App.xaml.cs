@@ -11,7 +11,7 @@ namespace FaceNews.Core
         public App()
         {
             InitializeComponent();
-            MainPage = new UI.DevView();
+            MainPage = new UI.WhatIsFNView();
         }
 
         protected override void OnStart()

@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace FaceNews.Core
 {
-    public class Value
+    public class Article
     {
         public string name { get; set; }
         public string url { get; set; }
         public ImageRecord image { get; set; }
+        public string description { get; set; }
+        public DateTime datePublished { get; set; }
     }
 }

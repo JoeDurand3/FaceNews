@@ -39,6 +39,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="BusinessLogic\EmotionProcessingLogic.cs" />
+    <Compile Include="BusinessLogic\NewsProcessingLogic.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="UI\DevView.xaml.cs">
       <DependentUpon>DevView.xaml</DependentUpon>
@@ -48,7 +49,7 @@
     <Compile Include="News\NewsService.cs" />
     <Compile Include="News\NewsServiceHelper.cs" />
     <Compile Include="News\Thumbnail.cs" />
-    <Compile Include="News\Value.cs" />
+    <Compile Include="News\Article.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextAnalytics\Document.cs" />
     <Compile Include="TextAnalytics\Error.cs" />

@@ -20,19 +20,8 @@ namespace FaceNews.Core.UI
         public DevView()
         {
             InitializeComponent();
-            CaptureButton.Clicked += image;
         }
 
-        private async void image(object observer, EventArgs e)
-        {
-            await CrossMedia.Current.Initialize();
-            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
-            {
-                SaveToAlbum = false,
-                DefaultCamera = Plugin.Media.Abstractions.CameraDevice.Front
-            });
-
-            ImageView.Source = ImageSource.FromStream(() => file.GetStream());
-        }
+        
     }
 }

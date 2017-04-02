@@ -8,6 +8,6 @@ namespace FaceNews.Core
 {
     public class NewsResponse
     {
-        public List<Value> value { get; set; }
+        public List<Article> value { get; set; }
     }
 }
