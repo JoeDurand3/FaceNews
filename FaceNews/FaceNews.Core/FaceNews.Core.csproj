@@ -40,10 +40,13 @@
     <Compile Include="BusinessLogic\NewsEmotionLogic.cs" />
     <Compile Include="BusinessLogic\NewsProcessingLogic.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Emotions\EmotionResponse.cs" />
+    <Compile Include="UI\WebPage.xaml.cs">
+      <DependentUpon>WebPage.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UI\DevView.xaml.cs">
       <DependentUpon>DevView.xaml</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="EmotionService.cs" />
     <Compile Include="News\ImageRecord.cs" />
     <Compile Include="News\NewsResponse.cs" />
     <Compile Include="News\NewsService.cs" />
@@ -62,9 +65,6 @@
     </Compile>
     <Compile Include="UI\BusyIndicator.cs" />
     <Compile Include="UI\ImageButton.cs" />
-    <Compile Include="UI\WebPage.xaml.cs">
-      <DependentUpon>WebPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\WhatIsFNView.xaml.cs">
       <DependentUpon>WhatIsFNView.xaml</DependentUpon>
     </Compile>
@@ -81,6 +81,9 @@
     <Compile Include="UI\SourceSelectionView.xaml.cs">
       <DependentUpon>SourceSelectionView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Emotions\Scores.cs" />
+    <Compile Include="Emotions\EmotionService.cs" />
+    <Compile Include="Emotions\EmotionServiceHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -149,11 +152,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UI\DevView.xaml">
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\WhatIsFNView.xaml">
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
@@ -162,6 +165,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UI\WebPage.xaml">

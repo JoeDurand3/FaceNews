@@ -10,8 +10,8 @@ namespace FaceNews.Core.BusinessLogic
 {
     public class NewsEmotionLogic
     {
-        private List<Article> _allArticles = null;
-        private int _happiness = 7;
+		private List<Article> _allArticles = new List<Article>();
+		private EmotionResponse _emotions = new EmotionResponse();
 
         public ObservableCollection<Article> currentArticles = new ObservableCollection<Article>();
 
@@ -21,11 +21,11 @@ namespace FaceNews.Core.BusinessLogic
         /// <value>
         /// The happiness.
         /// </value>
-        public int happiness
+        public EmotionResponse emotions
         {
             get
             {
-                return _happiness;
+                return _emotions;
             }
         }
 
@@ -39,6 +39,14 @@ namespace FaceNews.Core.BusinessLogic
         /// </summary>
         private NewsEmotionLogic()
         {
+            //"default" emotions:
+            _emotions = new EmotionResponse
+            {
+                scores = new Scores
+                {
+                    happiness = 0.5
+                }
+            };
 
         }
 
@@ -47,7 +55,6 @@ namespace FaceNews.Core.BusinessLogic
             try
             {
                 _allArticles = await NewsProcessingLogic.Instance.processArticles();
-
                 return null;
             }
             catch (Exception e)
@@ -64,17 +71,14 @@ namespace FaceNews.Core.BusinessLogic
         {
             try
             {
-                var arts = emotionalNewsInterface(_allArticles, _happiness);
-                currentArticles.Clear();
+				var arts = emotionalNewsInterface(_allArticles, _emotions.scores.happiness);
+				currentArticles.Clear();
 
-                /*foreach (Article a in arts)
-                {
-                    currentArticles.Add(a);
-                }*/
-                foreach (Article a in _allArticles)
+                foreach (Article a in arts)
                 {
                     currentArticles.Add(a);
                 }
+
                 return null;
             }
             catch (Exception e)
@@ -93,9 +97,8 @@ namespace FaceNews.Core.BusinessLogic
             {
                 var error = await EmotionProcessingLogic.Instance.TakePicture();
                 var byteRA = ReadFully(EmotionProcessingLogic.Instance.MediaFile.GetStream());
-                _happiness = await EmotionService.getEmotion(byteRA);
-                
-                return error;
+				_emotions = await EmotionService.getEmotion(byteRA);
+                return null;
             }
             catch(Exception e)
             {
@@ -103,24 +106,38 @@ namespace FaceNews.Core.BusinessLogic
             }
         }
 
-        private List<Article> emotionalNewsInterface(List <Article> articles, int happiness)
-        {
-            var list = new List<Article>();
+        /// <summary>
+        /// Determines the list of articles for the user, based on their happiness.
+        /// TODO: Update algorithm to consider more emotions than just happiness!
+        /// </summary>
+        /// <param name="articles"></param>
+        /// <param name="happiness"></param>
+        /// <returns></returns>
+        private List<Article> emotionalNewsInterface(List <Article> articles, double happiness)
+		{
+            var newArts = new List<Article>();
 
-            if (happiness >= 7)
+            if (happiness >= 0.7)
             {
-                return articles.Where<Article>(art => art.sentiment <= 3).ToList();
+                newArts = articles.Where<Article>(art => art.sentiment <= 0.3).ToList();
             }
-            else if (happiness >= 3)
+            else if (happiness >= 0.3)
             {
-                return articles.Where<Article>(art => art.sentiment > 3 && art.sentiment < 7).ToList();
+                newArts = articles.Where<Article>(art => art.sentiment > 0.3 && art.sentiment < 0.7).ToList();
             }
             else
             {
-                return articles.Where<Article>(art => art.sentiment >= 7).ToList();
+                newArts = articles.Where<Article>(art => art.sentiment >= 0.7).ToList();
             }
+
+            return newArts;
         }
 
+        /// <summary>
+        /// convert a stream into a byte array.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         private static byte[] ReadFully(Stream input)
         {
             byte[] buffer = new byte[16 * 1024];

@@ -1,0 +1,9 @@
+﻿List of items to do, in no particular order:
+
+1. Indicate happiness result with colored button / emoji instead of popup
+2. Improve news picking algorithm to include more emotions
+3. Prettier UI, make loading actions more apparent
+4. Fix Camera permissions requirement on Android
+
+
+Please add stuff if you notice something!

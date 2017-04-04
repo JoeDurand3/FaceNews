@@ -58,7 +58,7 @@ namespace FaceNews.Core.BusinessLogic
         {
             var docs = ArticleToDocumentHelper.toDocList(articles);
             var resp = await TextAnalyticsService.Instance.GetTextAnalyticsAsync(documents: docs);
-
+            
             for (int i = 0; i < docs.Count; i++)
             {
                 articles[i].sentiment = resp.documents[i].score;

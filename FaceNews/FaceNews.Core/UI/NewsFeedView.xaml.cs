@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -39,8 +38,8 @@ namespace FaceNews.Core.UI
         private async void camButtonPressed(object oberserver, EventArgs e)
         {
             var result = await NewsEmotionLogic.Instance.updateHappiness();
+            handleError("happiness is " + NewsEmotionLogic.Instance.emotions.scores.happiness);
             handleError(result);
-            handleError("happiness is " + NewsEmotionLogic.Instance.happiness);
             result = await NewsEmotionLogic.Instance.updateStories();
             handleError(result);
         }
@@ -58,6 +57,7 @@ namespace FaceNews.Core.UI
             var uri = (e.SelectedItem as Article).url;
             await Navigation.PushAsync(new WebPage(uri: uri));
         }
+
 
     }
 }
