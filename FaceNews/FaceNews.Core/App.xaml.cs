@@ -17,14 +17,8 @@ namespace FaceNews.Core
         public App()
         {
             InitializeComponent();
-
-            ayeeSync();
             MainPage = new NavigationPage(root: new NewsFeedView());
         }
-
-        private async void ayeeSync()
-        {
-            await CrossMedia.Current.Initialize();
-        }
+        
     }
 }

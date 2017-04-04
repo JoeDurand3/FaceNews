@@ -15,13 +15,13 @@ namespace FaceNewsDebug
             var test2 = NewsService.Instance.GetNewsAsync();
             Task.WaitAll(test2);
             var test2Result = test2.Result;
-            var test3 = NewsService.Instance.GetNewsAsync("Health");
-            Task.WaitAll(test3);
-            var test3Result = test3.Result;
+           // var test3 = NewsService.Instance.GetNewsAsync("Health");
+          //  Task.WaitAll(test3);
+            //var test3Result = test3.Result;
             try
             {
                 Console.WriteLine(test2Result.value[0].name);
-                Console.WriteLine(test3Result.value[0].name);
+               // Console.WriteLine(test3Result.value[0].name);
                 //Console.WriteLine(test2Result.value[0].name);
             }
             catch(NullReferenceException e)
