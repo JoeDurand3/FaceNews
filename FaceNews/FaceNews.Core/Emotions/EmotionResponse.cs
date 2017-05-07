@@ -9,5 +9,10 @@ namespace FaceNews.Core
    public class EmotionResponse
     {
         public Scores scores { get; set; }
+
+        public override string ToString()
+        {
+            return scores.ToString();
+        }
     }
 }

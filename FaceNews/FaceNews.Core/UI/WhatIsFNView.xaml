@@ -5,7 +5,7 @@
              BackgroundColor="#7c7ec0">
     <ContentPage.Content>
         <StackLayout Margin="30"
-                     HorizontalOptions="CenterAndExpand">
+                     HorizontalOptions="Cente rAndExpand">
             <Label Text="What is this?"
                    FontSize="20"
                    HorizontalOptions="CenterAndExpand"/>

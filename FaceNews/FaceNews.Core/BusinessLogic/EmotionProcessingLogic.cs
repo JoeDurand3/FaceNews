@@ -9,6 +9,8 @@ using System.IO;
 
 using Plugin.Media;
 using Plugin.Media.Abstractions;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 
 
 namespace FaceNews.Core.BusinessLogic
@@ -34,11 +36,39 @@ namespace FaceNews.Core.BusinessLogic
         }
 
         /// <summary>
+        /// Authorizes the camera if necessary.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<bool> authorizePermissions()
+        {
+            var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+            if (status != PermissionStatus.Granted)
+            {
+                status = (await CrossPermissions.Current.RequestPermissionsAsync(Permission.Camera))[0];
+            }
+
+            status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+            if (status != PermissionStatus.Granted)
+            {
+                status = (await CrossPermissions.Current.RequestPermissionsAsync(Permission.Storage))[0];
+            }
+
+            return (status == PermissionStatus.Granted) ? true : false;
+        }
+
+        /// <summary>
         /// Takes the picture.
         /// </summary>
         /// <returns>Take Picture Task.</returns>
         public async Task<string> TakePicture()
         {
+            var camAuthorized = await authorizePermissions();
+
+            if (!camAuthorized)
+            {
+                return "Camera Unauthorized. Verify the camera is enables in app settings.";
+            }
+
             await CrossMedia.Current.Initialize();
 
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
@@ -48,12 +78,12 @@ namespace FaceNews.Core.BusinessLogic
 
             var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
             {
-                Directory = "Sample",
+                Directory = "FaceNews",
                 Name = "face.jpg"
             });
 
             if (file == null)
-                return "no photo";
+                return "photo error.";
 
             MediaFile = file;
             return null;
